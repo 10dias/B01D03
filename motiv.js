@@ -20,7 +20,9 @@ http.get('http://' + API.hostname + API.path, function(res) {
 
     res.on('end', function() {
         finalData = JSON.parse(finalData);
-        console.log(finalData);
+        console.log('Motive-se!');
+        console.log('Título: ' + finalData[0].title);
+        console.log(finalData[0].content);
     });
 });
 
