@@ -8,18 +8,11 @@
 const http = require('http');
 
 const API = {
-    protocol: 'http:',
-    port: 80,
-    hostname: 'api.forismatic.com',
-    path:'/api/1.0/?method=getQuote&format=json&lang=en',
-    method: 'POST',
-    headers: {
-        'Content-type':'application/json'
-    }
+    hostname: 'quotesondesign.com',
+    path:'/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1',
 };
 
-http.request(API, function(res) {
-    console.log(res);
+http.get('http://' + API.hostname + API.path, function(res) {
     var finalData = '';
     res.on('data', function(d) {
         finalData +=d;
