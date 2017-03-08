@@ -13,7 +13,7 @@ const API = {
 };
 
 http.get('http://' + API.hostname + API.path, function(res) {
-    var finalData = '';
+    let finalData = '';
     res.on('data', function(d) {
         finalData +=d;
     });
@@ -21,8 +21,11 @@ http.get('http://' + API.hostname + API.path, function(res) {
     res.on('end', function() {
         finalData = JSON.parse(finalData);
         console.log('Motive-se!');
-        console.log('Título: ' + finalData[0].title);
-        console.log(finalData[0].content);
+        console.log(finalData[0].title);
+        let content = finalData[0].content
+            .substring(3, finalData[0].content.length - 5)
+            .trim();
+        console.log(content);
     });
 });
 
